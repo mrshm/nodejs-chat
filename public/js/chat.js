@@ -71,22 +71,22 @@ $messageForm.addEventListener('submit', (e) => {
     })
 })
 
-$sendLocationButton.addEventListener('click', () => {
-    if (!navigator.geolocation) {
-        return alert('Geolocation is not supported on your browser!')
-    }
+// $sendLocationButton.addEventListener('click', () => {
+//     if (!navigator.geolocation) {
+//         return alert('Geolocation is not supported on your browser!')
+//     }
 
-    $sendLocationButton.setAttribute('disabled', 'disabled')
+//     $sendLocationButton.setAttribute('disabled', 'disabled')
 
-    navigator.geolocation.getCurrentPosition((position) => {
-        socket.emit('sendLocation', {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-        }, () => {
-            $sendLocationButton.removeAttribute('disabled')
-        })
-    })
-})
+//     navigator.geolocation.getCurrentPosition((position) => {
+//         socket.emit('sendLocation', {
+//             latitude: position.coords.latitude,
+//             longitude: position.coords.longitude,
+//         }, () => {
+//             $sendLocationButton.removeAttribute('disabled')
+//         })
+//     })
+// })
 
 socket.emit('join', { username, room }, (error) => {
     if (error) {
